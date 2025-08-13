@@ -1,0 +1,36 @@
+:root {
+  --main-color: #25282e;
+  --accent-color: #99a2ea;
+  --light-blue: #c7dce3;
+  --white-grey: #d9d9d9;
+  --old-white: #e3dbd6;
+  --black: #070707;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--main-color);
+}
+
+header {
+  width: 100vw;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 2rem;
+}
+
+img {
+  max-height: 6rem;
+}
+
+h1 {
+  color: var(--light-blue);
+  transform: translateY(-0.5rem);
+}
