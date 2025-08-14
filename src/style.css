@@ -1,16 +1,28 @@
 :root {
   --main-color: #25282e;
   --accent-color: #99a2ea;
+  --transparent-blue: #667eea4d;
+  --blue: #b1e9ff;
   --light-blue: #c7dce3;
-  --white-grey: #d9d9d9;
+  --white-grey: #c2c2c2;
   --old-white: #e3dbd6;
   --black: #070707;
+  --light-black: #1e2228;
+
+  --standard-space: 2rem;
+  --small-space: 1rem;
+
+  --petal-radius: 40%;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: var(--black);
+  font-family: "Eagle Lake", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
@@ -25,9 +37,9 @@ header {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 1rem;
+  gap: var(--small-space);
   padding-top: 5rem;
-  padding-bottom: 2rem;
+  padding-bottom: var(--standard-space);
 }
 
 .logo-ctn {
@@ -43,6 +55,7 @@ header {
 }
 
 h1 {
+  font-family: "Bilbo Swash Caps";
   color: var(--light-blue);
 }
 
@@ -52,4 +65,41 @@ main {
   height: auto;
   min-height: 100vh;
   background-color: var(--old-white);
+}
+
+.post-h-ctn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-block: var(--standard-space);
+}
+
+#add-button {
+  position: fixed;
+  bottom: var(--standard-space);
+  background-color: var(--accent-color);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  border-radius: var(--petal-radius);
+  border: 1px solid #b9b9b9;
+  box-shadow: 2px 1px 7px #929292;
+  transition: text-shadow 0.3s ease, transform 0.5s ease;
+  text-shadow: none;
+}
+
+#add-button:hover {
+  text-shadow: 0.5px 0.5px 5px var(--light-blue),
+    -0.7px -0.7px 5px var(--light-blue);
+}
+
+@media screen and (min-width: 900px) {
+  .post-h-ctn {
+    position: relative;
+  }
+  #add-button {
+    position: absolute;
+    bottom: unset;
+    top: var(--small-space);
+    right: var(--small-space);
+  }
 }
