@@ -1,6 +1,8 @@
 :root {
   --main-color: #25282e;
   --accent-color: #99a2ea;
+  --accent-color-dark: #3f628e;
+
   --transparent-blue: #667eea4d;
   --blue: #b1e9ff;
   --light-blue: #c7dce3;
@@ -60,14 +62,14 @@ h1 {
 }
 
 main {
-  width: 50%;
+  width: 80%;
   min-width: 16.5rem;
   height: auto;
   min-height: 100vh;
   background-color: var(--old-white);
 }
 
-.post-h-ctn {
+.main-h-ctn {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -85,6 +87,7 @@ main {
   box-shadow: 2px 1px 7px #929292;
   transition: text-shadow 0.3s ease, transform 0.5s ease;
   text-shadow: none;
+  cursor: pointer;
 }
 
 #add-button:hover {
@@ -101,18 +104,28 @@ main {
   gap: var(--standard-space);
 }
 
-#chapters-list li {
-  width: 60%;
+.chapter-card:hover * {
+  color: var(--accent-color-dark);
 }
 
-.chapter-author {
+.chapter-card {
+  width: 60%;
+  cursor: pointer;
+}
+
+.chapter-card .chapter-author {
   font-size: 0.73rem;
 }
 
 @media screen and (min-width: 900px) {
-  .post-h-ctn {
+  main {
+    width: 50%;
+  }
+
+  .main-h-ctn {
     position: relative;
   }
+
   #add-button {
     position: absolute;
     bottom: unset;

@@ -1,0 +1,26 @@
+.chapter-h-ctn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.chapter-h-ctn * {
+  max-width: 100%;
+}
+
+.chapter-h-ctn h2 {
+  padding: var(--standard-space);
+  text-align: center;
+}
+
+.chapter-h-ctn .chapter-author {
+  font-size: 0.87rem;
+  text-align: center;
+}
+
+.chapter-h-ctn .chapter-content {
+  padding: var(--standard-space) calc(var(--standard-space) * 1.5);
+  font-size: 0.9rem;
+}

@@ -111,7 +111,7 @@
 }
 
 .form-buttons .cancel:hover {
-  box-shadow: 0 8px 25px var(--black);
+  box-shadow: 0 5px 15px var(--black);
 }
 
 @keyframes modalFadeIn {

@@ -1,14 +1,18 @@
+import { renderChapter } from "./chapter";
 import { modalAdd } from "./modalAdd";
 import "./style.css";
 import type { IChapter } from "./types";
+import { escapeHtml, truncateText } from "./utils";
 
 let chapters: IChapter[] = [];
 
 const main = document.querySelector<HTMLElement>("#main")!;
 
+loadChapters();
+
 function renderMain() {
   main.innerHTML = `
-    <div class="post-h-ctn">
+    <div class="main-h-ctn">
       <h2>Chapters</h2>
       <button id="add-button">Add chapter</button>
     </div>
@@ -16,6 +20,29 @@ function renderMain() {
       ${renderChaptersList()}
     </ol>
   `;
+
+  const chaptersList = document.querySelector<HTMLElement>("#chapters-list")!;
+
+  chaptersList.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const chapterCard = (e.target as HTMLElement).closest(
+      ".chapter-card"
+    ) as HTMLElement;
+
+    if (!chapterCard) return;
+
+    const indexStr = chapterCard.dataset.index;
+    if (!indexStr) return;
+
+    const index = parseInt(indexStr);
+    if (isNaN(index)) return;
+
+    const selectedChapter = chapters[index];
+    if (!selectedChapter) return;
+
+    renderChapter(selectedChapter);
+  });
 }
 
 const modal = modalAdd((chapter: IChapter) => {
@@ -43,7 +70,6 @@ function loadChapters() {
 }
 
 function renderChaptersList(): string {
-  loadChapters();
   if (chapters.length === 0) {
     return '<p class="no-chapters">No chapters yet. Add the first chapter.</p>';
   }
@@ -52,25 +78,17 @@ function renderChaptersList(): string {
     .map(
       (chapter, index) => `
       <li class="chapter-card" data-index="${index}">
-        <h3 class="chapter-title">${escapeHtml(chapter.title)}</h3>
-        <p class="chapter-author">By ${escapeHtml(chapter.author)}</p>
+        <h3>${escapeHtml(truncateText(chapter.title, 40))}</h3>
+        <p class="chapter-author">By ${escapeHtml(
+          truncateText(chapter.author, 20)
+        )}</p>
         <p class="chapter-content">${escapeHtml(
-          truncateText(chapter.content, 20)
+          truncateText(chapter.content, 30)
         )}</p>
       </li>
     `
     )
     .join("");
-}
-
-function escapeHtml(text: string): string {
-  const div = document.createElement("div");
-  div.textContent = text;
-  return div.innerHTML;
-}
-
-function truncateText(text: string, maxLength: number): string {
-  return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
 }
 
 renderMain();
