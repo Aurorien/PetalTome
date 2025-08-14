@@ -14,6 +14,9 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: var(--main-color);
 }
 
@@ -23,14 +26,30 @@ header {
   align-items: baseline;
   justify-content: center;
   gap: 1rem;
-  padding-top: 2rem;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
 }
 
-img {
+.logo-ctn {
+  position: relative;
+  width: max-content;
+}
+
+.logo-img {
+  position: absolute;
+  top: -50px;
+  left: -100px;
   max-height: 6rem;
 }
 
 h1 {
   color: var(--light-blue);
-  transform: translateY(-0.5rem);
+}
+
+main {
+  width: 50%;
+  min-width: 16.5rem;
+  height: auto;
+  min-height: 100vh;
+  background-color: var(--old-white);
 }
