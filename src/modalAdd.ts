@@ -1,7 +1,7 @@
-import type { Chapter } from "./types";
+import type { IChapter } from "./types";
 import "./modalAdd.css";
 
-export function modalAdd(onSubmit: (data: Chapter) => void) {
+export function modalAdd(onSubmit: (chapter: IChapter) => void) {
   const modal = document.createElement("div");
   modal.className = "modal";
   modal.innerHTML = `
@@ -52,13 +52,13 @@ export function modalAdd(onSubmit: (data: Chapter) => void) {
     e.preventDefault();
     const formData = new FormData(form);
 
-    const data: Chapter = {
+    const chapter: IChapter = {
       title: formData.get("title") as string,
       author: formData.get("author") as string,
       content: formData.get("content") as string,
     };
 
-    onSubmit(data);
+    onSubmit(chapter);
     close();
   };
 

@@ -1,5 +1,8 @@
 import { modalAdd } from "./modalAdd";
 import "./style.css";
+import type { IChapter } from "./types";
+
+let chapters: IChapter[] = [];
 
 const main = document.querySelector<HTMLElement>("#main")!;
 main.innerHTML = `
@@ -9,9 +12,18 @@ main.innerHTML = `
     </div>
 `;
 
-const modal = modalAdd((data) => console.log("Submitted:", data));
+const modal = modalAdd((chapter: IChapter) => {
+  console.log("Submitted:", chapter);
+  chapters.push(chapter);
+  saveChapters();
+});
+
 main.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).id === "add-button") {
     modal.open();
   }
 });
+
+function saveChapters() {
+  localStorage.setItem("chapters", JSON.stringify(chapters));
+}
