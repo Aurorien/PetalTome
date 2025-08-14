@@ -24,3 +24,13 @@
   padding: var(--standard-space) calc(var(--standard-space) * 1.5);
   font-size: 0.9rem;
 }
+
+.material-symbols-outlined {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 3rem;
+  background-color: var(--dark-green);
+  border: 2px solid var(--transparent-blue);
+
+  border-radius: 20px;
+}

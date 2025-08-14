@@ -53,8 +53,15 @@ const modal = modalAdd((chapter: IChapter) => {
 });
 
 main.addEventListener("click", (e) => {
-  if ((e.target as HTMLElement).id === "add-button") {
+  const target = e.target as HTMLElement;
+
+  if (target.id === "add-button") {
     modal.open();
+  }
+
+  if (target.id === "back-btn") {
+    renderMain();
+    return;
   }
 });
 
