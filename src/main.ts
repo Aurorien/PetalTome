@@ -2,7 +2,7 @@ import { renderChapter } from "./chapter";
 import { modalAdd } from "./modalAdd";
 import "./style.css";
 import type { IChapter } from "./types";
-import { escapeHtml, truncateText } from "./utils";
+import { escapeHtml, formatTimestamp, truncateText } from "./utils";
 
 let chapters: IChapter[] = [];
 
@@ -88,7 +88,8 @@ function renderChaptersList(): string {
         <h3>${escapeHtml(truncateText(chapter.title, 40))}</h3>
         <p class="chapter-author">By ${escapeHtml(
           truncateText(chapter.author, 20)
-        )}</p>
+        )} <span class="timestamp">${formatTimestamp(chapter.timestamp)}</span>
+        </p>
         <p class="chapter-content">${escapeHtml(
           truncateText(chapter.content, 30)
         )}</p>

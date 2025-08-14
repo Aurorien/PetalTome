@@ -55,6 +55,7 @@ export function modalAdd(onSubmit: (chapter: IChapter) => void) {
     const chapter: IChapter = {
       title: formData.get("title") as string,
       author: formData.get("author") as string,
+      timestamp: Date.now(),
       content: formData.get("content") as string,
     };
 

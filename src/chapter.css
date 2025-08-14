@@ -12,6 +12,7 @@
 
 .chapter-h-ctn h2 {
   padding: var(--standard-space);
+  padding-bottom: var(--small-space);
   text-align: center;
 }
 

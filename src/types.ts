@@ -1,5 +1,6 @@
 export interface IChapter {
   title: string;
-  content: string;
   author: string;
+  timestamp: number;
+  content: string;
 }

@@ -106,17 +106,32 @@ main {
   gap: var(--standard-space);
 }
 
-.chapter-card:hover * {
-  color: var(--accent-color-dark);
-}
-
 .chapter-card {
   width: 60%;
   cursor: pointer;
 }
 
+.chapter-card:hover * {
+  color: var(--accent-color-dark);
+}
+
+.chapter-card h3 {
+  font-size: 1.09rem;
+}
+
 .chapter-card .chapter-author {
-  font-size: 0.73rem;
+  font-size: 0.7rem;
+  margin-block: 0.05rem 0.3rem;
+}
+
+.chapter-author,
+.timestamp {
+  font-style: italic;
+}
+
+.timestamp {
+  margin-left: 0.3rem;
+  font-size: 0.59rem;
 }
 
 @media screen and (min-width: 900px) {
