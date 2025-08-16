@@ -11,9 +11,7 @@
 }
 
 .chapter-h-ctn h2 {
-  padding: var(--standard-space);
   padding-bottom: var(--small-space);
-  text-align: center;
 }
 
 .chapter-h-ctn .chapter-author {
@@ -22,7 +20,7 @@
 }
 
 .chapter-h-ctn .chapter-content {
-  padding: var(--standard-space) calc(var(--standard-space) * 1.5);
+  padding: var(--standard-space) var(--large-space);
   font-size: 0.9rem;
 }
 
@@ -34,12 +32,12 @@
 }
 
 .chapter-h-ctn.edit-form {
-  margin-top: calc(var(--standard-space) + var(--small-space));
+  margin-top: var(--large-space);
 }
 
 .form-group.edit {
   width: 100%;
-  padding-inline: calc(var(--standard-space) * 1.5);
+  padding-inline: var(--large-space);
 }
 
 .form-group.edit label {

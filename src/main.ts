@@ -1,10 +1,11 @@
 import { renderChapter } from "./chapter";
 import { modalAdd } from "./modalAdd";
 import "./style.css";
-import type { IChapter } from "./types";
+import type { IChapter, SortBy } from "./types";
 import { escapeHtml, formatTimestamp, truncateText } from "./utils";
 
 let chapters: IChapter[] = [];
+let sortBy: SortBy = "timestamp";
 
 const main = document.querySelector<HTMLElement>("#main")!;
 
@@ -12,16 +13,34 @@ loadChapters();
 
 function renderMain() {
   main.innerHTML = `
-    <div class="main-h-ctn">
-      <h2>Chapters</h2>
-      <button id="add-button" class="confirm-button">Add chapter</button>
-    </div>
+    <h2>Chapters</h2>
     <ol id="chapters-list">
       ${renderChaptersList()}
     </ol>
+    <div class="main-actions">
+      <button id="add-button" class="confirm-button">Add chapter</button>
+      <div class="sort-controls">
+        <label for="sort-select">Sort:</label>
+        <select id="sort-select">
+          <option value="timestamp" ${
+            sortBy === "timestamp" ? "selected" : ""
+          }>Newest First</option>
+          <option value="author" ${
+            sortBy === "author" ? "selected" : ""
+          }>Author (A-Z)</option>
+        </select>
+      </div>
+    </div>
   `;
 
   const chaptersList = document.querySelector<HTMLElement>("#chapters-list")!;
+  const sortSelect = document.querySelector<HTMLSelectElement>("#sort-select")!;
+
+  sortSelect.addEventListener("change", (e) => {
+    const target = e.target as HTMLSelectElement;
+    sortBy = target.value as SortBy;
+    renderMain();
+  });
 
   chaptersList.addEventListener("click", (e) => {
     e.preventDefault();
@@ -35,28 +54,13 @@ function renderMain() {
     const indexStr = chapterCard.dataset.index;
     if (!indexStr) return;
 
-    const index = parseInt(indexStr);
-    if (isNaN(index)) return;
+    const originalIndex = parseInt(indexStr);
+    if (isNaN(originalIndex)) return;
 
-    const selectedChapter = chapters[index];
+    const selectedChapter = chapters[originalIndex];
     if (!selectedChapter) return;
 
-    renderChapter(
-      selectedChapter,
-      index,
-      // Delete callback
-      (chapterIndex: number) => {
-        chapters.splice(chapterIndex, 1);
-        saveChapters();
-        renderMain();
-      },
-      // Save callback
-      (updatedChapter: IChapter, chapterIndex: number) => {
-        chapters[chapterIndex] = updatedChapter;
-        saveChapters();
-        // Stay in chapter view with updated data - no need to go back to main
-      }
-    );
+    renderChapter(selectedChapter, originalIndex, deleteChapter, saveChapter);
   });
 }
 
@@ -80,6 +84,17 @@ main.addEventListener("click", (e) => {
   }
 });
 
+const deleteChapter = (chapterIndex: number) => {
+  chapters.splice(chapterIndex, 1);
+  saveChapters();
+  renderMain();
+};
+
+const saveChapter = (updatedChapter: IChapter, chapterIndex: number) => {
+  chapters[chapterIndex] = updatedChapter;
+  saveChapters();
+};
+
 function saveChapters() {
   localStorage.setItem("chapters", JSON.stringify(chapters));
 }
@@ -91,26 +106,47 @@ function loadChapters() {
   }
 }
 
+function getSortedChapters(): IChapter[] {
+  const chaptersCopy = [...chapters];
+
+  switch (sortBy) {
+    case "timestamp":
+      return chaptersCopy.sort((a, b) => b.timestamp - a.timestamp); // Newest first
+    case "author":
+      return chaptersCopy.sort((a, b) =>
+        a.author.toLowerCase().localeCompare(b.author.toLowerCase())
+      ); // A-Z
+    default:
+      return chaptersCopy;
+  }
+}
+
 function renderChaptersList(): string {
   if (chapters.length === 0) {
     return '<p class="no-chapters">No chapters yet. Add the first chapter.</p>';
   }
 
-  return chapters
-    .map(
-      (chapter, index) => `
-      <li class="chapter-card" data-index="${index}">
-        <h3>${escapeHtml(truncateText(chapter.title, 40))}</h3>
-        <p class="chapter-author">By ${escapeHtml(
-          truncateText(chapter.author, 20)
-        )} <span class="timestamp">${formatTimestamp(chapter.timestamp)}</span>
-        </p>
-        <p class="chapter-content">${escapeHtml(
-          truncateText(chapter.content, 30)
-        )}</p>
-      </li>
-    `
-    )
+  const sortedChapters = getSortedChapters();
+
+  return sortedChapters
+    .map((chapter) => {
+      const originalIndex = chapters.findIndex((c) => c.id === chapter.id);
+
+      return `
+        <li class="chapter-card" data-index="${originalIndex}">
+          <h3>${escapeHtml(truncateText(chapter.title, 40))}</h3>
+          <p class="chapter-author">By ${escapeHtml(
+            truncateText(chapter.author, 20)
+          )} <span class="timestamp">${formatTimestamp(
+        chapter.timestamp
+      )}</span>
+          </p>
+          <p class="chapter-content">${escapeHtml(
+            truncateText(chapter.content, 30)
+          )}</p>
+        </li>
+      `;
+    })
     .join("");
 }
 

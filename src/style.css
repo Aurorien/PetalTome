@@ -13,8 +13,10 @@
   --black: #070707;
   --light-black: #1e2228;
 
+  --large-space: 3rem;
   --standard-space: 2rem;
   --small-space: 1rem;
+  --mini-space: 0.3rem;
 
   --petal-radius: 40%;
 }
@@ -37,6 +39,8 @@ body {
 }
 
 header {
+  position: fixed;
+  background-color: var(--main-color);
   width: 100vw;
   display: flex;
   align-items: baseline;
@@ -69,20 +73,32 @@ main {
   height: auto;
   min-height: 100vh;
   background-color: var(--old-white);
+  margin-top: 9.5rem;
 }
 
-.main-h-ctn {
+h2 {
+  padding: var(--large-space);
+  padding-bottom: var(--standard-space);
+  text-align: center;
+}
+
+.main-actions {
+  position: fixed;
+  bottom: var(--standard-space);
+  left: 0;
+  bottom: 0;
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding-block: var(--standard-space);
+  align-items: center;
+  justify-content: space-around;
+  padding: var(--standard-space);
+  margin-right: -1rem;
+  background-color: var(--main-color);
 }
 
 #add-button {
-  position: fixed;
-  bottom: var(--standard-space);
   background-color: var(--accent-color);
-  padding: 0.3rem 0.6rem;
+  padding: var(--mini-space) 0.6rem;
   font-size: 0.9rem;
   border-radius: var(--petal-radius);
   border: 1px solid #b9b9b9ec;
@@ -123,7 +139,7 @@ main {
 
 .chapter-card .chapter-author {
   font-size: 0.7rem;
-  margin-block: 0.05rem 0.3rem;
+  margin-block: 0.05rem var(--mini-space);
 }
 
 .chapter-author,
@@ -131,8 +147,24 @@ main {
   font-style: italic;
 }
 
+.sort-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  gap: var(--mini-space);
+}
+
+.sort-controls * {
+  font-size: 0.7rem;
+}
+
+.sort-controls label {
+  color: var(--light-blue);
+}
+
 .timestamp {
-  margin-left: 0.3rem;
+  margin-left: var(--mini-space);
   font-size: 0.59rem;
 }
 
@@ -145,12 +177,8 @@ main {
     position: relative;
   }
 
-  #add-button {
-    position: absolute;
-    bottom: unset;
-    top: var(--small-space);
-    right: var(--small-space);
-    padding: 0.2rem 0.5rem;
-    box-shadow: 2px 1px 7px #929292;
+  .main-actions {
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 }

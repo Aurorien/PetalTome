@@ -53,6 +53,7 @@ export function modalAdd(onSubmit: (chapter: IChapter) => void) {
     const formData = new FormData(form);
 
     const chapter: IChapter = {
+      id: crypto.randomUUID(),
       title: formData.get("title") as string,
       author: formData.get("author") as string,
       timestamp: Date.now(),

@@ -90,13 +90,13 @@ export function renderChapter(
 
     if (saveBtn) {
       saveBtn.addEventListener("click", () => {
-        const titleInput = document.getElementById(
+        const titleInput = document.querySelector<HTMLInputElement>(
           "edit-title"
         ) as HTMLInputElement;
-        const authorInput = document.getElementById(
+        const authorInput = document.querySelector<HTMLInputElement>(
           "edit-author"
         ) as HTMLInputElement;
-        const contentTextarea = document.getElementById(
+        const contentTextarea = document.querySelector<HTMLTextAreaElement>(
           "edit-content"
         ) as HTMLTextAreaElement;
 
