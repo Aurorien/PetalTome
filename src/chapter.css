@@ -31,10 +31,6 @@
   gap: var(--large-space);
 }
 
-.chapter-h-ctn.edit-form {
-  margin-top: var(--large-space);
-}
-
 .form-group.edit {
   width: 100%;
   padding-inline: var(--large-space);
@@ -46,12 +42,8 @@
 
 .form-group.edit input,
 .form-group.edit textarea {
-  width: 100%;
-  padding: 12px 16px;
   background-color: #e4e4e4;
   border: 1px solid var(--white-grey);
-  border-radius: 8px;
-  font-size: 16px;
 }
 
 .form-buttons .cancel.edit {
@@ -75,9 +67,7 @@
 
 .material-symbols-outlined.edit,
 .material-symbols-outlined.delete {
-  position: normal;
   font-size: 1.3rem;
-  border-radius: 20px;
 }
 
 @media screen and (min-width: 900px) {

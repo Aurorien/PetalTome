@@ -16,6 +16,8 @@
   --large-space: 3rem;
   --standard-space: 2rem;
   --small-space: 1rem;
+  --little-space: 0.75rem;
+  --tiny-space: 0.5rem;
   --mini-space: 0.3rem;
 
   --petal-radius: 40%;
@@ -71,10 +73,10 @@ main {
   width: 80%;
   min-width: 16.5rem;
   height: auto;
-  min-height: calc(100vh - 9.5rem);
+  min-height: 100vh;
   background-color: var(--old-white);
   padding-top: 13.5rem;
-  padding-bottom: 14rem;
+  padding-bottom: 14rem; /* Initial */
 }
 
 h2 {

@@ -6,7 +6,7 @@ export function modalAdd(onSubmit: (chapter: IChapter) => void) {
   modal.className = "modal";
   modal.innerHTML = `
     <div class="modal-content">
-      <h2>Add New Post</h2>
+      <h2>Add new chapter</h2>
       
       <form>
         <div class="form-group">
@@ -26,7 +26,7 @@ export function modalAdd(onSubmit: (chapter: IChapter) => void) {
         
         <div class="form-buttons">
           <button type="button" class="cancel">Cancel</button>
-          <button type="submit">Add Chapter</button>
+          <button type="submit">Add chapter</button>
         </div>
       </form>
     </div>

@@ -36,6 +36,8 @@ function renderMain() {
   const chaptersList = document.querySelector<HTMLElement>("#chapters-list")!;
   const sortSelect = document.querySelector<HTMLSelectElement>("#sort-select")!;
 
+  main.style.paddingBottom = "14rem";
+
   sortSelect.addEventListener("change", (e) => {
     const target = e.target as HTMLSelectElement;
     sortBy = target.value as SortBy;

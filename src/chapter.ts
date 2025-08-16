@@ -13,6 +13,8 @@ export function renderChapter(
   let isEditing = false;
   let currentChapter = { ...chapter }; // Shallow copy, sufficient since there are no nested objects here
 
+  main.style.paddingBottom = "3rem";
+
   function render() {
     if (!isEditing) {
       main.innerHTML = `
