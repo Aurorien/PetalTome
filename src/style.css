@@ -73,11 +73,11 @@ main {
   height: auto;
   min-height: calc(100vh - 9.5rem);
   background-color: var(--old-white);
-  margin-top: 9.5rem;
+  padding-top: 13.5rem;
+  padding-bottom: 14rem;
 }
 
 h2 {
-  padding: var(--large-space);
   padding-bottom: var(--standard-space);
   text-align: center;
 }
@@ -161,6 +161,10 @@ h2 {
 
 .sort-controls label {
   color: var(--light-blue);
+}
+
+#sort-select {
+  padding-inline: var(--mini-space);
 }
 
 .timestamp {
