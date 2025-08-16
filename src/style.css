@@ -109,6 +109,8 @@ main {
 .chapter-card {
   width: 60%;
   cursor: pointer;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .chapter-card:hover * {
