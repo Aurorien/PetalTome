@@ -71,7 +71,7 @@ main {
   width: 80%;
   min-width: 16.5rem;
   height: auto;
-  min-height: 100vh;
+  min-height: calc(100vh - 9.5rem);
   background-color: var(--old-white);
   margin-top: 9.5rem;
 }
