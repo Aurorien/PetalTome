@@ -26,9 +26,9 @@
 
 .edit-icons-ctn {
   position: fixed;
-  bottom: 1.7rem;
+  bottom: var(--standard-space);
   display: flex;
-  gap: var(--standard-space);
+  gap: var(--large-space);
 }
 
 .chapter-h-ctn.edit-form {
@@ -66,7 +66,7 @@
 
 .material-symbols-outlined.arrow {
   position: fixed;
-  bottom: 1.5rem;
+  bottom: var(--standard-space);
   left: 3rem;
   background-color: var(--dark-green);
   border: 2px solid var(--transparent-blue);
