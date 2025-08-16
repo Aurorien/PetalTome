@@ -82,11 +82,11 @@ main {
   position: fixed;
   bottom: var(--standard-space);
   background-color: var(--accent-color);
-  padding: 0.2rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   font-size: 0.9rem;
   border-radius: var(--petal-radius);
-  border: 1px solid #b9b9b9;
-  box-shadow: 2px 1px 7px #929292, 2px 1px 15px #323131;
+  border: 1px solid #b9b9b9ec;
+  box-shadow: 2px 1px 7px #929292, 2px 1px 15px #828282;
   transition: text-shadow 0.3s ease, transform 0.5s ease;
   text-shadow: none;
   cursor: pointer;
@@ -148,6 +148,7 @@ main {
     bottom: unset;
     top: var(--small-space);
     right: var(--small-space);
+    padding: 0.2rem 0.5rem;
     box-shadow: 2px 1px 7px #929292;
   }
 }

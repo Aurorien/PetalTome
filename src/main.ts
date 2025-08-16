@@ -14,7 +14,7 @@ function renderMain() {
   main.innerHTML = `
     <div class="main-h-ctn">
       <h2>Chapters</h2>
-      <button id="add-button">Add chapter</button>
+      <button id="add-button" class="confirm-button">Add chapter</button>
     </div>
     <ol id="chapters-list">
       ${renderChaptersList()}
@@ -41,7 +41,22 @@ function renderMain() {
     const selectedChapter = chapters[index];
     if (!selectedChapter) return;
 
-    renderChapter(selectedChapter);
+    renderChapter(
+      selectedChapter,
+      index,
+      // Delete callback
+      (chapterIndex: number) => {
+        chapters.splice(chapterIndex, 1);
+        saveChapters();
+        renderMain();
+      },
+      // Save callback
+      (updatedChapter: IChapter, chapterIndex: number) => {
+        chapters[chapterIndex] = updatedChapter;
+        saveChapters();
+        // Stay in chapter view with updated data - no need to go back to main
+      }
+    );
   });
 }
 

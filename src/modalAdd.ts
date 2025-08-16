@@ -10,23 +10,23 @@ export function modalAdd(onSubmit: (chapter: IChapter) => void) {
       
       <form>
         <div class="form-group">
-          <label>Title</label>
-          <input type="text" name="title" required />
+          <label for="title">Title</label>
+          <input id="title" type="text" name="title" required />
         </div>
         
         <div class="form-group">
-          <label>Author</label>
-          <input type="text" name="author" required />
+          <label for="author">Author</label>
+          <input id="author" type="text" name="author" required />
         </div>
         
         <div class="form-group">
-          <label>Content</label>
-          <textarea name="content" required></textarea>
+          <label for="content">Content</label>
+          <textarea id="content" name="content" required></textarea>
         </div>
         
         <div class="form-buttons">
           <button type="button" class="cancel">Cancel</button>
-          <button type="submit">Add Post</button>
+          <button type="submit">Add Chapter</button>
         </div>
       </form>
     </div>

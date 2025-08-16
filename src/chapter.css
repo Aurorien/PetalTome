@@ -26,12 +26,64 @@
   font-size: 0.9rem;
 }
 
-.material-symbols-outlined {
+.edit-icons-ctn {
+  position: fixed;
+  bottom: 1.7rem;
+  display: flex;
+  gap: var(--standard-space);
+}
+
+.chapter-h-ctn.edit-form {
+  margin-top: calc(var(--standard-space) + var(--small-space));
+}
+
+.form-group.edit {
+  width: 100%;
+  padding-inline: calc(var(--standard-space) * 1.5);
+}
+
+.form-group.edit label {
+  color: var(--black);
+}
+
+.form-group.edit input,
+.form-group.edit textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #e4e4e4;
+  border: 1px solid var(--white-grey);
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.form-buttons .cancel.edit {
+  background-color: var(--white-grey);
+  color: var(--light-black);
+  border: 2px solid #d2d2d2;
+}
+
+.form-buttons .cancel.edit:hover {
+  box-shadow: 0 5px 15px var(--white-grey);
+}
+
+.material-symbols-outlined.arrow {
   position: fixed;
   bottom: 1.5rem;
   left: 3rem;
   background-color: var(--dark-green);
   border: 2px solid var(--transparent-blue);
-
   border-radius: 20px;
+}
+
+.material-symbols-outlined.edit,
+.material-symbols-outlined.delete {
+  position: normal;
+  font-size: 1.3rem;
+  border-radius: 20px;
+}
+
+@media screen and (min-width: 900px) {
+  .form-buttons.edit {
+    gap: 5rem;
+  }
 }
